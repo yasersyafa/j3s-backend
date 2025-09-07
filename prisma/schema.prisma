@@ -27,3 +27,11 @@ model User {
 
   @@map("users")
 }
+
+model Game {
+  id String @id @default(cuid())
+  title String @unique @db.VarChar(255)
+  link String? @db.VarChar(255)
+
+  @@map("games")
+}
