@@ -13,3 +13,17 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id String @id @default(cuid())
+  username String @unique @db.VarChar(10)
+  email String @unique @db.VarChar(100)
+  hash_password String @db.Text()
+  avatar_url String? @db.Text()
+  joinedAt DateTime @db.Timestamp()
+  updatedAt DateTime @updatedAt @db.Timestamp()
+  verifiedAt DateTime? @db.Timestamp()
+  token String @db.VarChar(100)
+
+  @@map("users")
+}
