@@ -1,14 +1,17 @@
-import { Hono } from 'hono'
+import { Hono } from "hono";
 
-const app = new Hono()
+const app = new Hono();
 
 const welcomeStrings = [
-  'Hello Hono!',
-  'To learn more about Hono on Vercel, visit https://vercel.com/docs/frameworks/hono'
-]
+  "Hello Jam 3 Shubuh Developer!",
+  "This is the developer API from J3S Provider",
+  "Current API Version: v1",
+];
 
-app.get('/', (c) => {
-  return c.text(welcomeStrings.join('\n\n'))
-})
+app.get("/", (c) => {
+  return c.redirect("/api");
+});
 
-export default app
+app.get("/api", (c) => c.text(welcomeStrings.join("\n\n")));
+
+export default app;
